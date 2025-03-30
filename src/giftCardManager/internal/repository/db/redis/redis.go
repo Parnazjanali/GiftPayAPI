@@ -1,0 +1,6 @@
+package redisdb
+
+func InitDb(){
+
+	
+}
