@@ -43,7 +43,7 @@ The system architecture consists of two independent services:
 
 * **Programming Language:** Golang 
 * **API Framework:** Fiber 
-* **Database:** SQLite ️ (for initial development, adaptable to PostgreSQL or MySQL)
+* **Database:** SQLite ️ (for initial development, adaptable to Redis)
 * **Concurrency and Caching:** Redis ⚡ (using sorted lists for tracking the first **1,000 users** and counters for limit management)
 * **Logging:** Zap Logger 
 * **API Documentation:** Swagger 
