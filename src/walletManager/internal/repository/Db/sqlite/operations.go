@@ -1,8 +1,8 @@
 package sqliteDb
 
 import (
-	"GiftPayAPI/src/walletManager/internal/models"
 	"errors"
+	"walletManager/internal/models"
 
 	"gorm.io/gorm"
 )

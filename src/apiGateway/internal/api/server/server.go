@@ -1,14 +1,17 @@
 package server
 
 import (
+	"apiGateway/config"
 	"apiGateway/internal/api/handler"
-	"apiGateway/internal/middleware"
+	"apiGateway/internal/api/middleware"
 	sqliteDB "apiGateway/repository/db/sqlite"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func Run() {
+
+	config.LoadConfig()
 
 	sqliteDB.InitDb()
 

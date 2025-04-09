@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"GiftPayAPI/src/walletManager/internal/models"
-	sqliteDb "GiftPayAPI/src/walletManager/internal/repository/Db/sqlite"
+	"walletManager/internal/models"
+	sqliteDb "walletManager/internal/repository/Db/sqlite"
 
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"

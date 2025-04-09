@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"GiftPayAPI/src/walletManager/internal/models"
 	"strings"
+	"walletManager/internal/models"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt"

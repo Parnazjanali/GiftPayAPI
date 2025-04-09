@@ -109,7 +109,7 @@ func ValidateToken(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"user_id": userId,
-		"status":  "valid",
+		"userId": userId,
+		"status": "valid",
 	})
 }

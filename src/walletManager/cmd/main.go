@@ -1,6 +1,6 @@
 package main
 
-import "GiftPayAPI/src/walletManager/internal/api/server"
+import "walletManager/internal/api/server"
 
 func main() {
 

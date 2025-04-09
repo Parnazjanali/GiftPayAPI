@@ -12,3 +12,7 @@ type ErrorResponse struct {
 		Message string `json:"message"`
 	} `json:error`
 }
+type Config struct {
+	Port      string
+	JwtSecret string
+}

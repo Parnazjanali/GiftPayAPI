@@ -30,6 +30,6 @@ func JWTAuthMiddleware(c *fiber.Ctx) error {
 			"Error": "Invalid Authentication token",
 		})
 	}
-	c.Locals("user_id", claims["username"])
+	c.Locals("userId", claims["username"])
 	return c.Next()
 }

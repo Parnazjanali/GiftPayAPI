@@ -14,6 +14,6 @@ func Run() {
 	app := fiber.New()
 
 	app.Post("/api/gift-cards/link", middlewares.JwtAuthMiddleware, handler.LinkGiftCardId)
-	app.Listen(":8080")
+	app.Listen("0.0.0.0:8080")
 
 }

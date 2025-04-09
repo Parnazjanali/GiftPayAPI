@@ -7,11 +7,6 @@
 - **Path:** `/Login`
 - **Method:** `POST`
 
-### Headers
-| Header         |Description|
-|----------------|---------|
-| Content-Type   | `application/json`|
-
 
 ### Request Body
 ```json
@@ -57,7 +52,7 @@
 #### Internal Server Error (`500`)
 ```json
 {
-    "Code": "1003",
+    "Code": "500",
     "Message": "Internal server error."
   
 }
@@ -81,11 +76,11 @@
 #### Success (`200 OK`)
 ```json
 {
-  "user_id": "12345",
+  "userId": "12345",
   "status": "valid"
 }
 ```
-- **`user_id`**: Unique identifier of the authenticated user
+- **`userId`**: Unique identifier of the authenticated user
 - **`status`**: Indicates whether the token is valid
 
 ### Errors
@@ -93,7 +88,7 @@
 #### Unauthorized (`401`)
 ```json
 {
-  "error": {
+  "Error": {
     "code": "401",
     "message": "Invalid or expired token."
   }
@@ -103,7 +98,7 @@
 #### Internal Server Error (`500`)
 ```json
 {
-  "error": {
+  "Error": {
     "code": "500",
     "message": "Internal server error."
   }

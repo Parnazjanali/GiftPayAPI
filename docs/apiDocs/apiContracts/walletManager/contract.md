@@ -6,7 +6,7 @@
 
 ### Endpoint
 - **Method:** `GET`
-- **Route:** `/wallet/{userId}`
+- **Route:** `/wallet/:userId`
 - **Description:**
     - Retrieves the wallet ID associated with a user based on the provided user ID.
     - This route is called by the **API Gateway** to fetch the corresponding wallet ID for subsequent operations.
@@ -20,7 +20,7 @@ header
 
 body
 {
-    "userId": "12345"
+    "userId": "username"
 }
 ```
 
@@ -30,7 +30,7 @@ body
 ```json
 {
     "status": "success",
-    "userId": "12345",
+    "userId": "username",
     "walletId": "67890",
     "giftCardId": "abc123",
 }
