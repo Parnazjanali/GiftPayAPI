@@ -18,7 +18,7 @@ func Run() {
 	app := fiber.New()
 
 	app.Post("/api/Login", handler.LoginUser)
-	app.Post("/api/Verify-Token", middleware.JWTAuthMiddleware, handler.ValidateToken)
+	app.Post("/api/active/:giftCardId", middleware.JWTAuthMiddleware, handler.ActivateGiftCard)
 
 	app.Listen("0.0.0.0:8082")
 

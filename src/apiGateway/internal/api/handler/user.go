@@ -4,7 +4,6 @@ import (
 	"apiGateway/internal/model"
 	Service "apiGateway/internal/service"
 	"apiGateway/utils"
-	"strings"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -52,64 +51,37 @@ func LoginUser(c *fiber.Ctx) error {
 		"expires_in": 3600,
 	})
 }
-func ValidateToken(c *fiber.Ctx) error {
+func ActivateGiftCard(c *fiber.Ctx) error {
+	userId := c.Locals("userId")
 
-	authHeader := c.Get("Authorization")
-	if authHeader == "" {
+	if userId == nil {
 		return c.Status(fiber.StatusUnauthorized).JSON(model.ErrorResponse{
 			Error: struct {
-				Code    string `json:"code"`
-				Message string `json:"message"`
+				Code    string "json:\"code\""
+				Message string "json:\"message\""
 			}{
 				Code:    "401",
-				Message: "Authorization header is missing",
+				Message: "Unauthorized",
 			},
 		})
 	}
 
-	tokenParts := strings.Split(authHeader, "Bearer ")
-	if len(tokenParts) != 2 || tokenParts[0] != "" {
-		return c.Status(fiber.StatusUnauthorized).JSON(model.ErrorResponse{
+	giftCardId := c.Params("giftCardId")
+	if giftCardId == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(model.ErrorResponse{
 			Error: struct {
-				Code    string `json:"code"`
-				Message string `json:"message"`
+				Code    string "json:\"code\""
+				Message string "json:\"message\""
 			}{
-				Code:    "401",
-				Message: "Invalid or expired token",
-			},
-		})
-	}
-
-	tokenString := tokenParts[1]
-
-	claims, err := utils.VerifyToken(tokenString)
-	if err != nil {
-		return c.Status(fiber.StatusUnauthorized).JSON(model.ErrorResponse{
-			Error: struct {
-				Code    string `json:"code"`
-				Message string `json:"message"`
-			}{
-				Code:    "401",
-				Message: "Invalid or expired token",
-			},
-		})
-	}
-
-	userId, ok := claims["username"].(string)
-	if !ok || userId == "" {
-		return c.Status(fiber.StatusUnauthorized).JSON(model.ErrorResponse{
-			Error: struct {
-				Code    string `json:"code"`
-				Message string `json:"message"`
-			}{
-				Code:    "401",
-				Message: "Invalid or expired token",
+				Code:    "400",
+				Message: "Gift card ID not provided.",
 			},
 		})
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"userId": userId,
-		"status": "valid",
+		"userId":     userId,
+		"giftCardId": giftCardId,
+		"message":    "Gift Card will be activated soon",
 	})
 }
