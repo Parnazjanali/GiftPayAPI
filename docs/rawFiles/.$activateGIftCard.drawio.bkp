@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2" pages="2">
   <diagram id="5o81-kmXDzTtyveauIpv" name="Page-1">
-    <mxGraphModel dx="1362" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1858" dy="1032" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -136,7 +136,7 @@
         <mxCell id="11" value="Gift Card Manager" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;strokeWidth=3;" parent="1" vertex="1">
           <mxGeometry x="1100" y="150" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="rRF_v2zIEI87N9-IPPQ--57" value="" style="group" parent="1" vertex="1" connectable="0">
+        <mxCell id="rRF_v2zIEI87N9-IPPQ--57" value="" style="group" vertex="1" connectable="0" parent="1">
           <mxGeometry x="440" y="1090" width="781" height="60" as="geometry" />
         </mxCell>
         <mxCell id="37" value="User" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;strokeWidth=3;" parent="rRF_v2zIEI87N9-IPPQ--57" vertex="1">
@@ -145,7 +145,7 @@
         <mxCell id="38" value="API GATEWAY" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;strokeWidth=3;" parent="rRF_v2zIEI87N9-IPPQ--57" vertex="1">
           <mxGeometry x="210" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="rRF_v2zIEI87N9-IPPQ--54" value="" style="group" parent="rRF_v2zIEI87N9-IPPQ--57" vertex="1" connectable="0">
+        <mxCell id="rRF_v2zIEI87N9-IPPQ--54" value="" style="group" vertex="1" connectable="0" parent="rRF_v2zIEI87N9-IPPQ--57">
           <mxGeometry x="441" width="340" height="60" as="geometry" />
         </mxCell>
         <mxCell id="40" value="Wallet Manager&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1;strokeWidth=3;" parent="rRF_v2zIEI87N9-IPPQ--54" vertex="1">

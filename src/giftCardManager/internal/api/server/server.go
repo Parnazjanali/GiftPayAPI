@@ -2,7 +2,6 @@ package apiserver
 
 import (
 	"GiftCardManager/internal/api/handler"
-	"GiftCardManager/internal/api/middlewares"
 	sqlitedb "GiftCardManager/internal/repository/db/sqlite"
 
 	"github.com/gofiber/fiber/v2"
@@ -13,7 +12,7 @@ func Run() {
 
 	app := fiber.New()
 
-	app.Post("/api/gift-cards/link", middlewares.JwtAuthMiddleware, handler.LinkGiftCardId)
+	app.Post("/api/gift-cards/link", handler.LinkGiftCardId)
 	app.Listen("0.0.0.0:8080")
 
 }
