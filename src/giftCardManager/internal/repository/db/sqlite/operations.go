@@ -1,23 +1,40 @@
 package sqlitedb
 
-import "GiftCardManager/internal/models"
+import (
+	"GiftCardManager/internal/models"
+	"fmt"
 
-func GetGiftCardId(giftCardId string) (*models.GIftCard, error) {
+	"gorm.io/gorm"
+)
+
+func GetGiftCardByID(db *gorm.DB, giftCardId string) (*models.GIftCard, error) {
 	var giftCard models.GIftCard
-	result := Db.Where("id=?", giftCardId).First(&giftCard)
+	result := db.Where("id = ?", giftCardId).First(&giftCard)
 	if result.Error != nil {
 		return nil, result.Error
 	}
 	return &giftCard, nil
 }
+func LinkGiftCardToWallet(db *gorm.DB, giftCard *models.GIftCard, walletId string) error {
+	// بررسی اینکه کارت هدیه قبلاً استفاده شده است یا نه
+	if giftCard.IsUsed {
+		return fmt.Errorf("این کارت هدیه قبلاً استفاده شده است")
+	}
 
-func LinkGIftCardToWallet(giftCard *models.GIftCard, walletId string) error {
-	giftCard.WalletId = &walletId
+	// به‌روزرسانی اطلاعات کارت هدیه
+	giftCard.WalletId = walletId
 	giftCard.IsUsed = true
-
-	result := Db.Save(&giftCard)
+	result := db.Save(&giftCard)
 	if result.Error != nil {
 		return result.Error
 	}
 	return nil
+}
+func GetWalletByUserId(db *gorm.DB, userId string) (*models.Wallet, error) {
+	var wallet models.Wallet
+	result := db.Where("user_id = ?", userId).First(&wallet)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	return &wallet, nil
 }

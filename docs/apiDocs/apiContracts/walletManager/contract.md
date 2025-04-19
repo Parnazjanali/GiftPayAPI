@@ -129,14 +129,6 @@ body
 GET /wallet/67890/transactions?limit=10
 ```
 
-**Headers:**
-```json
-{
-    "Authorization": "Bearer jwt_token_here"
-}
-```
-
----
 
 ### Response Example
 
@@ -183,6 +175,5 @@ GET /wallet/67890/transactions?limit=10
 ---
 
 ## Notes
-- The request **requires a valid JWT token** in the Authorization header.
 - The default number of transactions returned is **10**, but this can be adjusted using the `limit` query parameter.
 - If the wallet is **not found**, a `404 Not Found` error is returned.

@@ -35,13 +35,6 @@
 }
 ```
 
-#### Unauthorized (`401 Unauthorized`)
-```json
-{
-    "Code": "401",
-    "Message": "Invalid or missing token"
-}
-```
 
 #### Not Found (`404 Not Found`)
 ```json
@@ -62,6 +55,5 @@
 ---
 
 ## Notes
-- This request requires a **valid JWT token**; otherwise, a **401 Unauthorized** error will be returned.
 - If the **gift card is invalid** or not found in the system, a **404 Not Found** error will be returned.
 - If the **gift card has already been used**, the request will be rejected with a **409 Conflict** error.
