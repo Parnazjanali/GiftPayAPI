@@ -1,0 +1,68 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "GIFTCARD MANAGER API",
+      "description": "Gift card management API for linking gift cards to users.",
+      "version": "0.1.9"
+    },
+    "servers": [
+      {
+        "url": "http://127.0.0.1:8080",
+        "description": "Local development server"
+      }
+    ],
+    "paths": {
+      "/api/gift-cards/link": {
+        "post": {
+          "summary": "Link a gift card to the authenticated user.",
+          "description": "Links a gift card ID to the currently authenticated user.",
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "giftCardId": {
+                      "type": "string",
+                      "description": "The ID of the gift card to be linked.",
+                      "example": "giftcard-456"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Gift card linked successfully."
+            },
+            "400": {
+              "description": "Bad request, missing or invalid gift card ID."
+            },
+            "401": {
+              "description": "Unauthorized, invalid or missing token."
+            },
+            "404": {
+              "description": "Gift card not found or already linked."
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }
+  

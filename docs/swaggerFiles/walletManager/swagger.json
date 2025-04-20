@@ -1,0 +1,196 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "WalletManager API",
+      "description": "Wallet management API for managing user wallets.",
+      "version": "0.1.9"
+    },
+    "servers": [
+      {
+        "url": "http://127.0.0.1:8081",
+        "description": "Local development server"
+      }
+    ],
+    "paths": {
+      "/wallet/{userId}": {
+        "get": {
+          "summary": "Get wallet ID.",
+          "description": "Retrieves the wallet ID for the user with the given userId.",
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "description": "The ID of the user whose wallet ID is to be retrieved.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Wallet ID retrieved successfully.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "walletId": {
+                        "type": "string",
+                        "description": "The ID of the user's wallet."
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Wallet not found for the given userId."
+            },
+            "401": {
+              "description": "Unauthorized, invalid or missing token."
+            }
+          }
+        }
+      },
+      "/wallet/{walletId}/set-balance": {
+        "post": {
+          "summary": "Set wallet balance.",
+          "description": "Sets the balance for the wallet with the given walletId.",
+          "parameters": [
+            {
+              "name": "walletId",
+              "in": "path",
+              "required": true,
+              "description": "The ID of the wallet for which the balance is to be set.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "balance": {
+                      "type": "number",
+                      "format": "float",
+                      "example": 100.5,
+                      "description": "The new balance to be set for the wallet."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Wallet balance updated successfully."
+            },
+            "400": {
+              "description": "Bad request, invalid balance value."
+            },
+            "401": {
+              "description": "Unauthorized, invalid or missing token."
+            },
+            "404": {
+              "description": "Wallet not found for the given ID."
+            }
+          }
+        }
+      },
+      "/wallet/{walletId}/get-balance": {
+        "get": {
+          "summary": "Get wallet balance.",
+          "description": "Retrieves the current balance of the specified wallet.",
+          "parameters": [
+            {
+              "name": "walletId",
+              "in": "path",
+              "required": true,
+              "description": "The ID of the wallet to retrieve the balance for.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Wallet balance retrieved successfully.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "balance": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "The current balance of the wallet."
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Wallet not found for the given ID."
+            },
+            "401": {
+              "description": "Unauthorized, invalid or missing token."
+            }
+          }
+        }
+      },
+      "/wallet/{walletId}/get-transactions": {
+        "get": {
+          "summary": "Get wallet transactions.",
+          "description": "Retrieves a list of transactions for the specified wallet.",
+          "parameters": [
+            {
+              "name": "walletId",
+              "in": "path",
+              "required": true,
+              "description": "The ID of the wallet to retrieve transactions for.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+         "responses": {
+  "200": {
+    "description": "Wallet transactions retrieved successfully."
+  },
+  "404": {
+    "description": "Wallet not found or no transactions available."
+  },
+  "401": {
+    "description": "Unauthorized, invalid or missing token."
+  }
+}
+        }
+    }
+}
+}

@@ -37,9 +37,28 @@ Activate Giftcard callFlows : [click me](docs/rawFiles/activateGIftCard.drawio)
 
 Transaction Log callFlows : [click me](docs/rawFiles/transactioLog.drawio)
 
-SwaggerFiles : [click me](docs/swaggerFiles/swagger.json)
+---
+**Swagger Documentation**
 
-Each microservice has its own environment config, Dockerfile, and dedicated routes.
+![ApiGateway Swagger UI](image-1.png)
+
+**To download the APIGATEWAY Swagger JSON file, please go to this link** : **[click me](docs/swaggerFiles/apiGateway/swagger.json)**
+
+![WalletManager API Swagger UI](image-2.png)
+
+**To download the WalletManager Swagger JSON file, please go to this link** : **[click me](docs/swaggerFiles/walletManager/swagger.json)**
+![GiftCardManager Swagger UI](image-3.png)
+
+**To download the GiftCardManager Swagger JSON file, please go to this link** : **[click me](docs/swaggerFiles/giftCardManager/swagger.json)**
+
+---
+**NOTE** :
+
+-  **Using Live Server:** A simple way to view this is using Live Server (or a similar tool) with an `index.html` file in a `swagger-ui` folder (create one if it doesn't exist).
+
+---
+
+**Each microservice has its own environment config, Dockerfile,Swaggerfiles, and dedicated routes.**
 
 ## 🔁 Call Flow & Contracts
 

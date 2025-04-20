@@ -1,0 +1,65 @@
+[33mcommit 6e69c495952f40306b8ffda610959c827c7987e6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Sat Apr 19 22:47:29 2025 +0330
+
+    Refactor: Improve project documentation and codebase structure
+
+[33mcommit 31c58a3e31242e0234487c6257ae59c9d805e79a[m
+Author: Parnaz Janli <166816680+Parnazjanali@users.noreply.github.com>
+Date:   Sat Apr 19 22:51:16 2025 +0330
+
+    Update README.md
+
+[33mcommit 03e5350791b55a2a7c424f0a9faf674c3fe41778[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Sat Apr 19 22:43:53 2025 +0330
+
+    Refactor: Improve project documentation and codebase structure
+
+[33mcommit be5e4ba67909a4d68de2ad8dd5d808eff0714156[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Sun Apr 13 20:30:15 2025 +0330
+
+    updated a route to active Giftcard
+
+[33mcommit 6e61d8947dca4ca1502dc324200f5e1161c12a45[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Wed Apr 9 17:01:29 2025 +0330
+
+    added README File
+
+[33mcommit d9e5983fd9cdfa45bf5e7a9ff034259ba8d2e246[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Mon Apr 7 19:36:35 2025 +0330
+
+    Update API documentation
+
+[33mcommit 510aa4893a3613a15c40208bb3d551dd9d2de107[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Mon Apr 7 19:32:08 2025 +0330
+
+    Implement ValidateToken handler with JWT authentication and error handling
+
+[33mcommit 7b94a832c6f4172e36ab338f973d0b90fd9fbb5d[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Sat Apr 5 13:47:02 2025 +0330
+
+    implement full wallet functionality including JWT middleware, GetWalletId & SetBalance handlers, DB operations, and route wiring
+
+[33mcommit f4753e99b0ea5cccf98cb37f01b7baa7e1973a5f[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Sun Mar 30 15:40:53 2025 +0330
+
+     Implemented initial GiftCard component design & updated contracts
+
+[33mcommit 829d76a610848b37d5a2f508fd15b7f078d218df[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Wed Mar 5 16:20:18 2025 +0330
+
+    Second Commit
+
+[33mcommit 47f673dc246eebb4e18519c49c60b979c16d100e[m
+Author: Pranaz Janali <janaliparnaz@gmail.com>
+Date:   Wed Mar 5 16:17:21 2025 +0330
+
+    First Commit

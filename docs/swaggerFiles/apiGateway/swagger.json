@@ -1,0 +1,117 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "GIFTCARD API",
+      "description": "API for managing user login and gift card activation",
+      "version": "0.1.9"
+    },
+    "servers": [
+      {
+        "url": "http://127.0.0.1:8082",
+        "description": "Local development server"
+      }
+    ],
+    "paths": {
+      "/api/Login": {
+        "post": {
+          "summary": "User Login.",
+          "description": "Logs in a user and returns a JWT token for subsequent requests.",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "username": {
+                      "type": "string",
+                      "example": "johndoe",
+                      "description": "The username of the user."
+                    },
+                    "password": {
+                      "type": "string",
+                      "example": "password123",
+                      "description": "The password of the user."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Login successful, returns JWT token.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "token": {
+                        "type": "string",
+                        "description": "JWT token to be used for authenticating future requests."
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized, invalid credentials."
+            },
+            "400": {
+              "description": "Bad request, missing or invalid input."
+            }
+          }
+        }
+      },
+      "/api/active/{giftCardId}": {
+        "post": {
+          "summary": "Activate a gift card.",
+          "description": "Activates a gift card using the provided ID and JWT token.",
+          "parameters": [
+            {
+              "name": "giftCardId",
+              "in": "path",
+              "required": true,
+              "description": "The ID of the gift card to be activated.",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Gift card activated successfully."
+            },
+            "401": {
+              "description": "Unauthorized, invalid or missing token."
+            },
+            "404": {
+              "description": "Gift card not found."
+            },
+            "400": {
+              "description": "Bad request, invalid input."
+            },
+            "500": {
+              "description": "Internal server error, unexpected condition."
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      }
+    }
+  }
+  
