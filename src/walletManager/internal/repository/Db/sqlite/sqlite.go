@@ -18,5 +18,6 @@ func InitDb() {
 	}
 
 	DB.AutoMigrate(&models.Wallet{})
+	DB.AutoMigrate(&models.Transaction{})
 
 }

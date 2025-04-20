@@ -7,10 +7,12 @@ type Wallet struct {
 }
 
 type Transaction struct {
-	ID        uint      `json:"id" gorm:"primaryKey"`
-	WalletID  string    `json:"wallet_id" gorm:"index"`
-	Amount    float64   `json:"amount"`
-	Timestamp int64     `json:"timestamp"` 
+	ID              uint    `gorm:"primaryKey"` 
+	WalletID        string  `gorm:"not null"`
+	Amount          float64 `gorm:"not null"`
+	TransactionType string  `gorm:"not null"`
+	Timestamp       int64
+	Wallet          Wallet `gorm:"foreignKey:WalletID;references:ID;constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 }
 
 type SetBalanceRequest struct {

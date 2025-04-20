@@ -157,50 +157,21 @@ func GetWalletBalance(c *fiber.Ctx) error {
 func GetWalletTransactions(c *fiber.Ctx) error {
 
 	walletID := c.Params("walletId")
-
-	loggedInUserID := c.Locals("userId").(string)
-	fmt.Println("Logged in user ID:", loggedInUserID)
 	fmt.Println("Wallet ID:", walletID)
-
-	if loggedInUserID == "" {
-		return c.Status(fiber.StatusUnauthorized).JSON(models.ErrorResponse{
+	if walletID == "" {
+		return c.Status(fiber.StatusBadRequest).JSON(models.ErrorResponse{
 			Error: struct {
 				Code    string "json: \"code\""
 				Message string "json: \"message\""
 			}{
-				Code:    "401",
-				Message: "Unauthorized",
-			},
-		})
-	}
-
-	var count int64
-	result := sqliteDb.DB.Model(&models.Wallet{}).Where("user_id = ? AND id = ?", loggedInUserID, walletID).Count(&count)
-	if result.Error != nil {
-		return c.Status(fiber.StatusInternalServerError).JSON(models.ErrorResponse{
-			Error: struct {
-				Code    string "json: \"code\""
-				Message string "json: \"message\""
-			}{
-				Code:    "500",
-				Message: "Internal server error",
-			},
-		})
-	}
-	if count == 0 {
-		return c.Status(fiber.StatusForbidden).JSON(models.ErrorResponse{
-			Error: struct {
-				Code    string "json: \"code\""
-				Message string "json: \"message\""
-			}{
-				Code:    "403",
-				Message: "Forbidden: You do not have access to this wallet",
+				Code:    "400",
+				Message: "walletId is required in the URL path",
 			},
 		})
 	}
 
 	var transactions []models.Transaction
-	result = sqliteDb.DB.Where("wallet_id = ?", walletID).Order("timestamp DESC").Limit(10).Find(&transactions)
+	result := sqliteDb.DB.Where("wallet_id = ?", walletID).Order("timestamp DESC").Limit(10).Preload("Wallet").Find(&transactions)
 	if result.Error != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(models.ErrorResponse{
 			Error: struct {
@@ -213,6 +184,5 @@ func GetWalletTransactions(c *fiber.Ctx) error {
 		})
 	}
 
-	// مرحله برگرداندن پاسخ
 	return c.Status(fiber.StatusOK).JSON(transactions)
 }
