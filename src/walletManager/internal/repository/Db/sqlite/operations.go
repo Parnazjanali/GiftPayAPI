@@ -1,24 +1,22 @@
 package sqliteDb
 
 import (
-	"errors"
 	"walletManager/internal/models"
-
-	"gorm.io/gorm"
 )
+
+func GetWalletBalance(walletId string) (float64, error) {
+	var wallet models.Wallet
+	if err := DB.First(&wallet, "id = ?", walletId).Error; err != nil {
+		return 0, err
+	}
+	return wallet.Balance, nil
+}
 
 func UpdateWalletBalance(walletId string, newBalance float64) error {
 	var wallet models.Wallet
-
-	if err := DB.First(&wallet, "id=?", walletId).Error; err != nil {
-		if errors.Is(err, gorm.ErrRecordNotFound) {
-			return gorm.ErrRecordNotFound
-		}
+	if err := DB.First(&wallet, "id = ?", walletId).Error; err != nil {
 		return err
 	}
 	wallet.Balance = newBalance
-	if err := DB.Save(&wallet).Error; err != nil {
-		return err
-	}
-	return nil
+	return DB.Save(&wallet).Error
 }

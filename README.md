@@ -40,14 +40,14 @@ Transaction Log callFlows : [click me](docs/rawFiles/transactioLog.drawio)
 ---
 **Swagger Documentation**
 
-![ApiGateway Swagger UI](image-1.png)
+![ApiGateway Swagger UI](APIGATEWAY.png)
 
 **To download the APIGATEWAY Swagger JSON file, please go to this link** : **[click me](docs/swaggerFiles/apiGateway/swagger.json)**
 
-![WalletManager API Swagger UI](image-2.png)
+![WalletManager API Swagger UI](WALLETMANAGER.png)
 
 **To download the WalletManager Swagger JSON file, please go to this link** : **[click me](docs/swaggerFiles/walletManager/swagger.json)**
-![GiftCardManager Swagger UI](image-3.png)
+![GiftCardManager Swagger UI](GIFTCARD.png)
 
 **To download the GiftCardManager Swagger JSON file, please go to this link** : **[click me](docs/swaggerFiles/giftCardManager/swagger.json)**
 

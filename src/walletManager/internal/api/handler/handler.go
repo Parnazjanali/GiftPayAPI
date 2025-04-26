@@ -79,9 +79,7 @@ func SetWalletBalance(c *fiber.Ctx) error {
 			},
 		})
 	}
-
-	err := sqliteDb.UpdateWalletBalance(walletId, Body.Balance)
-
+	currentBalance, err := sqliteDb.GetWalletBalance(walletId)
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return c.Status(fiber.StatusNotFound).JSON(models.ErrorResponse{
@@ -93,24 +91,38 @@ func SetWalletBalance(c *fiber.Ctx) error {
 					Message: "Wallet not found",
 				},
 			})
-			return c.Status(fiber.StatusInternalServerError).JSON(models.ErrorResponse{
-				Error: struct {
-					Code    string "json: \"code\""
-					Message string "json: \"message\""
-				}{
-					Code:    "500",
-					Message: "Internal server error",
-				},
-			})
 		}
+		return c.Status(fiber.StatusInternalServerError).JSON(models.ErrorResponse{
+			Error: struct {
+				Code    string "json: \"code\""
+				Message string "json: \"message\""
+			}{
+				Code:    "500",
+				Message: "Failed to retrieve wallet balance",
+			},
+		})
+	}
+
+	newBalance := currentBalance + Body.Balance
+
+	err = sqliteDb.UpdateWalletBalance(walletId, newBalance)
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(models.ErrorResponse{
+			Error: struct {
+				Code    string "json: \"code\""
+				Message string "json: \"message\""
+			}{
+				Code:    "500",
+				Message: "Failed to update wallet balance",
+			},
+		})
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"status":     "success",
 		"message":    "Wallet balance updated successfully",
-		"newBalance": Body.Balance,
+		"newBalance": newBalance,
 	})
-
 }
 func GetWalletBalance(c *fiber.Ctx) error {
 	walletId := c.Params("walletId")

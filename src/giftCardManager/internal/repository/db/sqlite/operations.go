@@ -16,12 +16,11 @@ func GetGiftCardByID(db *gorm.DB, giftCardId string) (*models.GIftCard, error) {
 	return &giftCard, nil
 }
 func LinkGiftCardToWallet(db *gorm.DB, giftCard *models.GIftCard, walletId string) error {
-	// بررسی اینکه کارت هدیه قبلاً استفاده شده است یا نه
 	if giftCard.IsUsed {
 		return fmt.Errorf("این کارت هدیه قبلاً استفاده شده است")
 	}
 
-	// به‌روزرسانی اطلاعات کارت هدیه
+	
 	giftCard.WalletId = walletId
 	giftCard.IsUsed = true
 	result := db.Save(&giftCard)
